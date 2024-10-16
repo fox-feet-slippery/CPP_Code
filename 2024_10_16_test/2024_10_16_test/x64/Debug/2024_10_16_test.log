@@ -1,0 +1,4 @@
+﻿  test.cpp
+D:\CodeTest\CPP\test\2024_10_16_test\2024_10_16_test\test.cpp(627,7): error C2804: 二进制“operator <”的参数太多
+D:\CodeTest\CPP\test\2024_10_16_test\2024_10_16_test\test.cpp(628,2): error C2333: “Date::operator <”: 函数声明中有错误；跳过函数体
+D:\CodeTest\CPP\test\2024_10_16_test\2024_10_16_test\test.cpp(684,16): error C2676: 二进制“<”:“Date”不定义该运算符或到预定义运算符可接收的类型的转换
