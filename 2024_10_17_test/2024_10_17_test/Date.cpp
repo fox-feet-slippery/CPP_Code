@@ -118,14 +118,14 @@ Date Date::operator-(int day)
 }
 
 
-//++d 前置++
+//++d 脟掳脰脙++
 Date& Date::operator++()
 {
 	*this += 1;
 	return *this;
 }
 
-//d++ 后置++
+//d++ 潞贸脰脙++
 Date Date::operator++(int)
 {
 	Date tmp(*this);
@@ -133,14 +133,14 @@ Date Date::operator++(int)
 	return tmp;
 }
 
-//--d 前置--
+//--d 脟掳脰脙--
 Date& Date::operator--()
 {
 	*this -= 1;
 	return *this;
 }
 
-//d-- 后置--
+//d-- 潞贸脰脙--
 Date Date::operator--(int)
 {
 	Date tmp(*this);
@@ -180,9 +180,16 @@ int GetYtoYDay(int year1, int year2)
 
 int Date::operator-(const Date& d)
 {
-	int day1 = GettoNYDay(_year, _month, _day);
-	int day2 = GettoNYDay(d._year, d._month, d._day);
+	Date max = *this;
+	Date min = d;
+	if (*this < d)
+	{
+		max = d;
+		min = *this;
+	}
+	int day1 = GettoNYDay(max._year, max._month, max._day);
+	int day2 = GettoNYDay(min._year, min._month, min._day);
 	int day3 = day1 - day2;
-	int day = GetYtoYDay(_year, d._year);
+	int day = GetYtoYDay(max._year, min._year);
 	return day + day3;
 }
