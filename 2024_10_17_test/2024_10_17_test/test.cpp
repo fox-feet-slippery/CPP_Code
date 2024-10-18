@@ -53,13 +53,30 @@ int main()
 	d1.Print();
 	ret2.Print();*/
 
-	Date d1(2024, 10, 17);
+	/*Date d1(2024, 10, 17);
+	Date d2(2004, 2, 13);
+	Date d3(2003, 11, 7);
+	int ret1 = d1 - d2;
+	int ret2 = d1 - d3;
+	cout << ret1 << endl;
+	cout << ret2 << endl;*/
+
+	Date d1(2024, 10, 18);
 	Date d2(2004, 2, 13);
 	Date d3(2003, 11, 7);
 	int ret1 = d1 - d2;
 	int ret2 = d1 - d3;
 	cout << ret1 << endl;
 	cout << ret2 << endl;
+	
+	/*d1 << cout;
+	d1.operator<< (cout);*/
+	
+	//cout << d1;
+	cout << d1 << d2 << d3 << endl;
+	Date d4;
+	cin >> d4;
+	cout << d4;
 
 	return 0;
 }
