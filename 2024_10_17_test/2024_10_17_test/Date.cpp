@@ -6,6 +6,12 @@ Date::Date(int year, int month, int day)
 	_year = year;
 	_month = month;
 	_day = day;
+
+	if (!CheckDate())
+	{
+		cout << "日期非法" << "->";
+		cout << *this;
+	}
 }
 
 void Date::Print()
