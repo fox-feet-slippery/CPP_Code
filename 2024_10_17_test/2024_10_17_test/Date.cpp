@@ -215,3 +215,29 @@ int Date::operator-(const Date& d)
 //	return n * flag;
 //
 //}
+
+ostream& operator<<(ostream& out, const Date& d)
+{
+	out << d._year << "年" << d._month << "月" << d._day << "日" << endl;
+	return out;
+}
+
+istream& operator>>(istream& in, Date& d)
+{
+	while(1)
+	{
+		cout << "请依次输入年月日：>";
+		in >> d._year >> d._month >> d._day;
+		if (d.CheckDate())
+		{
+			break;
+		}
+		else
+		{
+			cout << "日期非法" << "->";
+			cout << d;
+			cout << "请重新输入..." << endl;
+		}
+	}
+	return in;
+}
