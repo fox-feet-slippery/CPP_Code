@@ -6,6 +6,12 @@ Date::Date(int year, int month, int day)
 	_year = year;
 	_month = month;
 	_day = day;
+
+	if (!CheckDate())
+	{
+		cout << "日期非法" << "->";
+		cout << *this;
+	}
 }
 
 void Date::Print()
@@ -118,14 +124,14 @@ Date Date::operator-(int day)
 }
 
 
-//++d ǰ��++
+//++d Ç°ÖÃ++
 Date& Date::operator++()
 {
 	*this += 1;
 	return *this;
 }
 
-//d++ ����++
+//d++ ºóÖÃ++
 Date Date::operator++(int)
 {
 	Date tmp(*this);
@@ -133,14 +139,14 @@ Date Date::operator++(int)
 	return tmp;
 }
 
-//--d ǰ��--
+//--d Ç°ÖÃ--
 Date& Date::operator--()
 {
 	*this -= 1;
 	return *this;
 }
 
-//d-- ����--
+//d-- ºóÖÃ--
 Date Date::operator--(int)
 {
 	Date tmp(*this);
@@ -180,9 +186,64 @@ int GetYtoYDay(int year1, int year2)
 
 int Date::operator-(const Date& d)
 {
-	int day1 = GettoNYDay(_year, _month, _day);
-	int day2 = GettoNYDay(d._year, d._month, d._day);
+	Date max = *this;
+	Date min = d;
+	if (*this < d)
+	{
+		max = d;
+		min = *this;
+	}
+	int day1 = GettoNYDay(max._year, max._month, max._day);
+	int day2 = GettoNYDay(min._year, min._month, min._day);
 	int day3 = day1 - day2;
-	int day = GetYtoYDay(_year, d._year);
+	int day = GetYtoYDay(max._year, min._year);
 	return day + day3;
+}
+
+//int Date::operator-(const Date& d)
+//{
+//	Date max = *this;
+//	Date min = d;
+//	int flag = 1;
+//	if (*this < d)
+//	{
+//		max = d;
+//		min = *this;
+//		flag = -1;
+//	}
+//
+//	int n = 0;
+//	while (min != max)
+//	{
+//		++min;
+//		++n;
+//	}
+//	return n * flag;
+//
+//}
+
+ostream& operator<<(ostream& out, const Date& d)
+{
+	out << d._year << "年" << d._month << "月" << d._day << "日" << endl;
+	return out;
+}
+
+istream& operator>>(istream& in, Date& d)
+{
+	while(1)
+	{
+		cout << "请依次输入年月日：>";
+		in >> d._year >> d._month >> d._day;
+		if (d.CheckDate())
+		{
+			break;
+		}
+		else
+		{
+			cout << "日期非法" << "->";
+			cout << d;
+			cout << "请重新输入..." << endl;
+		}
+	}
+	return in;
 }

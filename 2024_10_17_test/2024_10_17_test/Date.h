@@ -5,10 +5,23 @@ using namespace std;
 
 class Date
 {
+	//å‹å…ƒå£°æ˜
+	friend ostream& operator<<(ostream& out, const Date& d);
+	friend istream& operator>>(istream& in, Date& d);
+
 public:
 
 	Date(int year = 1, int month = 1, int day = 1);
 	void Print();
+	bool CheckDate()
+	{
+		if (_month < 1 || _month > 12 || _day < 1 || _day > GetMonthDay(_year, _month))
+		{
+			return false;
+		}
+		else
+			return true;
+	}
 	
 	bool operator<(const Date& d);
 	bool operator<=(const Date& d);
@@ -17,7 +30,7 @@ public:
 	bool operator==(const Date& d);
 	bool operator!=(const Date& d);
 
-	//¸ßÆµµ÷ÓÃµÄº¯Êı£¬·ÅÔÚÓòÀï±ß£¬ÇÒÊı×é¾²Ì¬static
+	//é«˜é¢‘è°ƒç”¨çš„å‡½æ•°ï¼Œæ”¾åœ¨åŸŸé‡Œè¾¹ï¼Œä¸”æ•°ç»„é™æ€static
 	int GetMonthDay(int year, int month)
 	{
 
@@ -40,20 +53,26 @@ public:
 	Date& operator-=(int day);
 	Date operator-(int day);
 
-	//++d Ç°ÖÃ++
+	//++d å‰ç½®++
 	Date& operator++();
-	//d++ ºóÖÃ++
+	//d++ åç½®++
 	Date operator++(int);
-	//--d Ç°ÖÃ--
+	//--d å‰ç½®--
 	Date& operator--();
-	//d-- ºóÖÃ--
+	//d-- åç½®--
 	Date operator--(int);
 
 	int operator-(const Date& d);
+
+	/*void operator<<(ostream& out);*/
 
 private:
 	int _year;
 	int _month;
 	int _day;
 };
+
+
+ostream& operator<<(ostream& out, const Date& d);
+istream& operator>>(istream& in, Date& d);
 
