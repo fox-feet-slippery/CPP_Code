@@ -1,0 +1,3 @@
+﻿  test.cpp
+D:\CodeTest\CPP\test\2024_10_26_test\2024_10_26_test\test.cpp(236,20): warning C4018: “<”: 有符号/无符号不匹配
+  2024_10_26_test.vcxproj -> D:\CodeTest\CPP\test\2024_10_26_test\Debug\2024_10_26_test.exe
