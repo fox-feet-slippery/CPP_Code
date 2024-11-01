@@ -45,8 +45,8 @@ namespace mystring
 			reserve(_capacity == 0 ? 4 : _capacity * 2);
 		}
 
-		_str[_size] = ch;
-		_size++;
+		_str[_size++] = ch;
+		_str[_size] = '\0';
 	}
 	
 	void string::append(const char* str)
